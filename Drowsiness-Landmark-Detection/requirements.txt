@@ -1,0 +1,17 @@
+numpy
+opencv-python-headless
+mediapipe
+scikit-learn
+tensorflow-cpu
+python-dotenv
+datetime
+argparse
+streamlit
+streamlit_webrtc
+av
+Pillow
+pyttsx3
+xgboost
+lightgbm
+pandas
+joblib
