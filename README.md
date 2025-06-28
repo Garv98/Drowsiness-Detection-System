@@ -1,31 +1,41 @@
-# Drowsiness-Detection-System
-# Real-Time Drowsiness Detection System
+# Real-time Drowsiness Detection System
 
-![Drowsiness Detection System](Assets/Logo.png)
-
-## Overview
-This project implements a real-time drowsiness detection system using facial landmark detection and machine learning. The system monitors a person's eye state, head pose, and blink patterns to detect signs of drowsiness and provide timely alerts.
+A robust, real-time drowsiness detection system that uses facial landmarks to monitor driver alertness. The system analyzes various facial features including Eye Aspect Ratio (EAR), PERCLOS (Percentage of Eye Closure), head pose, and blink rate to determine drowsiness levels.
 
 ## Features
+
 - Real-time facial landmark detection using MediaPipe Face Mesh
 - Multiple drowsiness indicators:
   - Eye Aspect Ratio (EAR)
   - PERCLOS (Percentage of Eye Closure)
-  - Head Pose Analysis
-  - Blink Rate Monitoring
-- Dynamic drowsiness confidence scoring (10-100%)
-- Audio-visual alerts when drowsiness is detected
-- Clean and intuitive Streamlit interface
+  - Head Pose Estimation
+  - Blink Rate Analysis
+- Dynamic drowsiness confidence calculation (10-100%)
+- Real-time alerts for drowsy state
+- Modern Streamlit-based user interface
+- Trained on multiple datasets for robust performance
 
-## Tech Stack
-- Python
-- MediaPipe
-- OpenCV
-- Streamlit
-- PyTorch
-- scikit-learn
-- NumPy
-- Pandas
+## Project Structure
+
+```
+.
+├── Data/
+│   └── features.csv            # Extracted features from all datasets
+├── Drowsiness-Landmark-Detection/
+│   ├── analyze_datasets.py     # Dataset analysis scripts
+│   ├── app.py                 # Initial Streamlit app
+│   ├── app_final.py           # Final production app
+│   ├── app_v2.py             # Version 2 of the app
+│   ├── app_v3.py             # Version 3 of the app
+│   ├── drowsiness_detector/   # Core detection module
+│   ├── extract_datasets.py    # Dataset extraction utilities
+│   ├── extract_features.py    # Feature extraction pipeline
+│   ├── model/                 # Trained models directory
+│   ├── preprocess_datasets.py # Data preprocessing scripts
+│   ├── requirements.txt       # Project dependencies
+│   └── train_model.py        # Model training pipeline
+└── README.md
+```
 
 ## Installation
 
@@ -35,65 +45,61 @@ git clone https://github.com/Garv98/Drowsiness-Detection-System.git
 cd Drowsiness-Detection-System
 ```
 
-2. Install required packages:
+2. Create and activate a virtual environment:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+3. Install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Usage
 
-Run the main application:
+1. Run the Streamlit app:
 ```bash
-streamlit run main_app.py
+streamlit run app_final.py
 ```
 
-The application will open in your default web browser, accessing your webcam for real-time drowsiness detection.
+2. Allow camera access when prompted
+3. The app will display:
+   - Live video feed with facial landmarks
+   - Real-time drowsiness metrics
+   - Alert messages when drowsiness is detected
 
-## How It Works
+## How it Works
 
-1. **Face and Landmark Detection**: Uses MediaPipe Face Mesh to detect 468 facial landmarks in real-time
+1. **Feature Extraction**:
+   - Facial landmarks are detected using MediaPipe Face Mesh
+   - EAR (Eye Aspect Ratio) is calculated from eye landmarks
+   - PERCLOS measures the percentage of eye closure over time
+   - Head pose is estimated using facial geometry
 
-2. **Feature Extraction**:
-   - Eye Aspect Ratio (EAR) calculation
-   - PERCLOS measurement
-   - Head pose estimation
-   - Blink rate analysis
+2. **Drowsiness Detection**:
+   - Multiple features are combined with appropriate weights
+   - Drowsiness confidence is calculated on a scale of 10-100%
+   - Alerts are triggered based on confidence thresholds
 
-3. **Drowsiness Detection**:
-   - Machine learning model trained on multiple datasets
-   - Real-time feature analysis
-   - Dynamic confidence scoring
-   - Alert system activation based on drowsiness threshold
-
-## Model Training
-
-The system uses a model trained on multiple datasets:
-- MRL Eye Dataset
-- Driver Drowsiness Dataset
-- YawDD Dataset
-
-Features are extracted using MediaPipe Face Mesh and processed to train the final model.
-
-## Project Structure
-```
-├── main_app.py           # Main Streamlit application
-├── requirements.txt      # Project dependencies
-├── Assets/              # Project assets
-├── drowsiness_detector/ # Core detection modules
-│   ├── core.py         # Core detection logic
-│   ├── app.py          # Application interface
-│   └── model/          # Trained models
-└── Data/               # Dataset files
-    └── features.csv    # Extracted features
-```
+3. **Model Training**:
+   - Features extracted from multiple datasets (MRL Eye, Driver Drowsiness, YawDD)
+   - Model trained using ensemble methods for robust performance
+   - Regular validation and testing to ensure accuracy
 
 ## Contributing
-Feel free to fork the project and submit pull requests. For major changes, please open an issue first to discuss the proposed changes.
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
 
 ## Acknowledgments
-- MediaPipe team for their face mesh implementation
-- Streamlit for their amazing web app framework
-- The open-source community for various drowsiness detection datasets
+
+- MediaPipe for facial landmark detection
+- MRL Eye Dataset
+- Driver Drowsiness Dataset
+- YawDD (Yawning Detection Dataset)
+- Streamlit for the web interface
