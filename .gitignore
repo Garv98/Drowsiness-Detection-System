@@ -1,0 +1,10 @@
+.venv/
+Data/*
+!Data/
+!Data/features.csv
+Drowsiness-Landmark-Detection/drowsiness_detector/
+__pycache__/
+.env
+.DS_Store
+Thumbs.db
+*.log
