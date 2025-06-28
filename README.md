@@ -23,10 +23,7 @@ A robust, real-time drowsiness detection system that uses facial landmarks to mo
 │   └── features.csv            # Extracted features from all datasets
 ├── Drowsiness-Landmark-Detection/
 │   ├── analyze_datasets.py     # Dataset analysis scripts
-│   ├── app.py                 # Initial Streamlit app
 │   ├── app_final.py           # Final production app
-│   ├── app_v2.py             # Version 2 of the app
-│   ├── app_v3.py             # Version 3 of the app
 │   ├── drowsiness_detector/   # Core detection module
 │   ├── extract_datasets.py    # Dataset extraction utilities
 │   ├── extract_features.py    # Feature extraction pipeline
